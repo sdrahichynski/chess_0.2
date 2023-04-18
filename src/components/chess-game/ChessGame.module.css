@@ -1,0 +1,153 @@
+.wrapper {
+    height: 100%;
+    display: flex;
+}
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    box-shadow: 0 0 6px rgba(0,0,0,.4), 0 0 12px rgba(0,0,0,.4);
+    position: relative;
+}
+
+.legendV, .legendH {
+    position: absolute;
+    display: flex;
+}
+
+.legendV span, .legendH span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    flex: 1 1 auto;
+}
+
+.legendV {
+    height: 100%;
+    right: 100%;
+    top: 0;
+    flex-direction: column;
+    margin-right: 4px;
+}
+
+.legendH {
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+}
+
+
+.cell {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+.cell.black {
+    background-color: #aaa;
+}
+
+.cell:hover {
+    box-shadow: 0 0 3px gold;
+    z-index: 1;
+}
+.cell.possible:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: darkseagreen;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+    z-index: 3;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.cell.attack {
+    background-color: rgba(255,122,122);
+}
+
+.piece {
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    pointer-events: none;
+    transition: transform .2s;
+}
+
+.piece:before {
+    display: block;
+    content: "";
+    border: 1px solid;
+    margin: auto;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.2), 2px 2px 4px rgba(0,0,0,.2);
+    border-radius: 4px;
+}
+
+.piece.black.selected:before {
+   background: dodgerblue;
+    border-color: dodgerblue;
+}
+
+.piece.white.selected:before {
+    background: fuchsia;
+    border-color: fuchsia;
+}
+
+.piece.black:before {
+    background: #000;
+}
+
+.piece.white:before {
+    background: #fff;
+}
+
+.rock:before {
+    width: 32px;
+    height: 32px;
+}
+
+.bishop:before {
+    width: 22px;
+    height: 22px;
+    transform:  scaleX(.5) rotateZ(-45deg);
+    transform-origin: center center;
+    box-shadow: -1px 1px 2px rgba(0,0,0,.2), -1px 2px 4px rgba(0,0,0,.2);
+}
+
+.king:before {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.queen:before {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.pawn:before {
+    width: 6px;
+    height: 18px;
+}
+
+.knight:before {
+    width: 25px;
+    height: 12px;
+    transform: rotate(-60deg) skew(30deg) ;
+    box-shadow: -1px 1px 2px rgba(0,0,0,.2), -1px 2px 4px rgba(0,0,0,.2);
+}
